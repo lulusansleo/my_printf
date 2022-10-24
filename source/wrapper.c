@@ -56,7 +56,7 @@ int wrapper_my_putchar(va_list ap)
 
 int wrapper_my_put_nbr(va_list ap)
 {
-    long int nb = va_arg(ap, long int);
+    int nb = va_arg(ap, int);
 
     my_put_nbr(nb);
     return my_nb_len(nb);

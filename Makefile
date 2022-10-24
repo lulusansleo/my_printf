@@ -37,7 +37,8 @@ SRC			=	./lib/my/my_compute_power_rec.c \
 				./lib/my/my_strupcase.c \
 				./lib/my/my_swap.c \
 				source/main_file.c\
-				source/wrapper.c
+				source/wrapper.c\
+				source/wrapper_second.c
 
 O_FILES		=	*.o
 

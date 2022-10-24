@@ -50,7 +50,7 @@ int assign_function(char c, va_list ap)
     int (*fptr []) (va_list ap) = {&wrapper_my_putstr, &wrapper_my_putchar,
     &wrapper_my_put_nbr, &wrapper_my_put_nbr, &my_print_percent,
     &wrapper_my_put_nbr_hexa, &wrapper_my_put_nbr_hexa_m,
-    &wrapper_my_put_nbr_octal, &wrapper_my_put_nbr_octal,
+    &wrapper_my_put_nbr_octal, &wrapper_my_put_nbr_unsigned_int,
     &wrapper_my_put_nbr_hexa};
 
     for (int i = 0; flags[i] != '\0'; ++i)
