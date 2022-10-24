@@ -22,7 +22,7 @@ int my_printf(char *s, ...)
 int is_a_flag(char c)
 {
     if (c == 'd' || c == 'i' || c == 's'
-    || c == 'c' || c == 37)
+    || c == 'c' || c == 37 || c != 'n')
         return 1;
     else
         return 0;
@@ -46,9 +46,11 @@ int write_s(char *s, va_list ap)
 
 int assign_function(char c, va_list ap)
 {
-    char *flags = "scid%x";
+    char *flags = "scid%xXoup";
     int (*fptr []) (va_list ap) = {&wrapper_my_putstr, &wrapper_my_putchar,
     &wrapper_my_put_nbr, &wrapper_my_put_nbr, &my_print_percent,
+    &wrapper_my_put_nbr_hexa, &wrapper_my_put_nbr_hexa_m,
+    &wrapper_my_put_nbr_octal, &wrapper_my_put_nbr_octal,
     &wrapper_my_put_nbr_hexa};
 
     for (int i = 0; flags[i] != '\0'; ++i)
