@@ -27,7 +27,6 @@ int my_nb_len(long int nb)
 
 int my_nb_len_base(long int nb, char *base)
 {
-    int my_nb_len(long int nb);
 
     int i;
     int len = my_strlen(base);
@@ -61,13 +60,4 @@ int wrapper_my_put_nbr(va_list ap)
 
     my_put_nbr(nb);
     return my_nb_len(nb);
-}
-
-int wrapper_my_put_nbr_hexa(va_list ap)
-{
-    long int nb = va_arg(ap, long int);
-    char *base = "0123456789abcdef";
-
-    my_put_nbr_base(nb, base);
-    return my_nb_len_base(nb, base);
 }
