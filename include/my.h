@@ -64,6 +64,9 @@
     int assign_function(char c, va_list ap);
     int wrapper_my_put_nbr(va_list ap);
     int wrapper_my_put_nbr_hexa(va_list ap);
+    int wrapper_my_put_nbr_hexa_m(va_list ap);
+    int wrapper_my_put_nbr_octal(va_list ap);
+    int wrapper_my_put_nbr_unsigned_int(va_list ap);
     int wrapper_my_putstr(va_list ap);
     int wrapper_my_putchar(va_list ap);
     int write_s(char *s, va_list ap);
