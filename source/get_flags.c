@@ -5,7 +5,7 @@
 ** get_flags
 */
 
-#include "include/my.h"
+#include "../include/my.h"
 
 check_flags_t flags_reset(check_flags_t *flags)
 {
@@ -16,6 +16,7 @@ check_flags_t flags_reset(check_flags_t *flags)
     flags->minus = 0;
     flags->zero = 0;
     flags->plus = 0;
+    flags->flag = NULL;
 }
 
 int is_format_flag(char c)
@@ -28,9 +29,9 @@ int is_format_flag(char c)
     return 0;
 }
 
-check_flags_t what_flags(check_flags_t *flags, char *str)
+int what_flags(check_flags_t *flags, char *str, int i)
 {
-    for (int i = 0; !is_format_flag(str[i]); ++i) {
+    while (!is_format_flag(str[i])) {
         if (str[i] == '-')
             flags->minus = 1;
         if (str[i] == '+')
@@ -41,5 +42,9 @@ check_flags_t what_flags(check_flags_t *flags, char *str)
             flags->hash = 1;
         if (str[i] == ' ')
             flags->empty = 1;
+        i++;
     }
+    printf("flag is %c\n", flags->flag);
+    flags->flag = str[i];
+    return i;
 }

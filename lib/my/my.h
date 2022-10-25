@@ -13,6 +13,17 @@
     #include <unistd.h>
     #include <stdarg.h>
 
+    typedef struct check_flags {
+        int hash;
+        int minus;
+        int plus;
+        int zero;
+        int empty;
+        int max;
+        int min;
+        char flag;
+    } check_flags_t;
+
     int get_arg_number(char *str);
     int my_reverse_nbr(int nb);
     int my_compute_power_rec(int nb , int p);
@@ -61,9 +72,12 @@
     void print_result(char letter, int frequency, int count);
     char *comparativetable(char *str);
     void print_float(int frequency);
-    int assign_function(char c, va_list ap);
+    int assign_function(va_list ap, check_flags_t *flags);
     int wrapper_my_put_nbr(va_list ap);
     int wrapper_my_put_nbr_hexa(va_list ap);
+    int wrapper_my_put_nbr_hexa_m(va_list ap);
+    int wrapper_my_put_nbr_octal(va_list ap);
+    int wrapper_my_put_nbr_unsigned_int(va_list ap);
     int wrapper_my_putstr(va_list ap);
     int wrapper_my_putchar(va_list ap);
     int write_s(char *s, va_list ap);
@@ -71,6 +85,9 @@
     int my_printf(char *s, ...);
     long int my_put_nbr_base(long int nb, char *base);
     int my_nb_len(long int nb);
+    int check_flags_order(char *format, int i);
     int my_nb_len_base(long int nb, char *str);
+    int what_flags(check_flags_t *flags, char *str, int i);
+    check_flags_t flags_reset(check_flags_t *flags);
 
 #endif /* !myh */

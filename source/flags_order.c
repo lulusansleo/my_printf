@@ -46,20 +46,18 @@ int is_argtype(char c)
         if (c == t[k]) {
             return 1;
         }
+        k++;
     }
     return 0;
 }
 
 int check_flags_order(char *format, int i)
 {
-    while (format[i] != '\0' && is_flag(format[i]) != 0) {
+    while (format[i] != '\0' && is_flag(format[i]) != 0)
         i++;
-    }
-    while (format[i] != '\0' && is_width(format[i]) != 0) {
+    while (format[i] != '\0' && is_width(format[i]) != 0)
         i++;
-    }
-    while (format[i] != '\0' && is_argtype(format[i]) != 0) {
+    if (is_argtype(format[i]) != 0)
         return 1;
-    }
     return 0;
 }
