@@ -8,6 +8,11 @@
 #include "../include/my.h"
 #include <stdarg.h>
 
+int check_flags_order(char *format, int i);
+int is_argtype(char c);
+int is_width(char c);
+int is_flag(char c);
+
 int my_printf(char *s, ...)
 {
     va_list ap;
@@ -33,7 +38,7 @@ int write_s(char *s, va_list ap)
     int count = 0;
 
     for (int i = 0; s[i] != '\0'; ++i) {
-        if (s[i] == 37 && is_a_flag(s[i + 1])) {
+        if (s[i] == 37 && check_flags_order(s, i + 1) == 1) {
             i++;
             count += assign_function(s[i], ap);
         } else {
