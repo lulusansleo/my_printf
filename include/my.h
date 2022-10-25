@@ -76,4 +76,11 @@
     int my_nb_len(long int nb);
     int my_nb_len_base(long int nb, char *str);
 
+    typedef struct check_flags {
+        int hash;
+        int minus;
+        int plus;
+        int zero;
+    } check_flags_t;
+
 #endif /* !myh */
