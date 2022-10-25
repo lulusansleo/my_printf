@@ -74,6 +74,7 @@
     int my_printf(char *s, ...);
     long int my_put_nbr_base(long int nb, char *base);
     int my_nb_len(long int nb);
+    int check_flags_order(char *format, int i);
     int my_nb_len_base(long int nb, char *str);
 
     typedef struct check_flags {
@@ -81,6 +82,9 @@
         int minus;
         int plus;
         int zero;
+        int empty;
+        int max;
+        int min;
     } check_flags_t;
 
 #endif /* !myh */
