@@ -16,12 +16,12 @@ void flags_reset(check_flags_t *flags)
     flags->minus = 0;
     flags->zero = 0;
     flags->plus = 0;
-    flags->flag = NULL;
+    flags->flag = '\0';
 }
 
 int is_format_flag(char c)
 {
-    char *str = "dscixXfeEgG%oupnb";
+    char *str = "dscixXfeEgG%oupnbS";
 
     for (int i = 0; str[i] != '\0'; ++i)
         if (str[i] == c)

@@ -15,8 +15,6 @@ SRC			=	./lib/my/my_compute_power_rec.c \
 				./lib/my/my_putchar.c \
 				./lib/my/my_putstr.c \
 				./lib/my/my_revstr.c \
-				./lib/my/my_showmem.c \
-				./lib/my/my_showstr.c \
 				./lib/my/my_sort_int_array.c \
 				./lib/my/my_str_to_word_array.c\
 				./lib/my/my_str_isalpha.c \
@@ -40,6 +38,8 @@ SRC			=	./lib/my/my_compute_power_rec.c \
 				source/wrapper.c\
 				source/wrapper_second.c\
 				source/flags_order.c\
+				source/wrapper_third.c\
+				source/print_funct.c\
 				source/get_flags.c
 
 O_FILES		=	*.o

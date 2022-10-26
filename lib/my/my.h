@@ -36,9 +36,7 @@
     int my_putchar(char c);
     int my_putstr(char const *str);
     char *my_revstr(char *str);
-    int my_showmem(char const *str, int size);
     void my_sort_int_array(int *tab, int size);
-    int my_showstr(char const *str);
     int my_str_isalpha(char const *str);
     int my_isalpha(char c);
     int my_str_islower(char const *str);
