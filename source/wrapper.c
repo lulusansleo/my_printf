@@ -43,20 +43,21 @@ int my_nb_len_base(long int nb, char *base)
     return i;
 }
 
-int wrapper_my_putstr(va_list ap)
+int wrapper_my_putstr(va_list ap, check_flags_t *flags)
 {
     return my_putstr(va_arg(ap, char *));
 }
 
-int wrapper_my_putchar(va_list ap)
+int wrapper_my_putchar(va_list ap, check_flags_t *flags)
 {
     return my_putchar(va_arg(ap, int));
 }
 
-int wrapper_my_put_nbr(va_list ap)
+int wrapper_my_put_nbr(va_list ap, check_flags_t *flags)
 {
     int nb = va_arg(ap, int);
+    int count = do_empty_int(nb, flags);
 
     my_put_nbr(nb);
-    return my_nb_len(nb);
+    return my_nb_len(nb) + count;
 }

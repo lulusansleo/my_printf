@@ -41,19 +41,19 @@ int write_s(char *s, va_list ap)
 int assign_function(va_list ap, check_flags_t *flag)
 {
     char *flags = "scid%xXoupbS";
-    int (*fptr []) (va_list ap) = {&wrapper_my_putstr, &wrapper_my_putchar,
-    &wrapper_my_put_nbr, &wrapper_my_put_nbr, &my_print_percent,
-    &wrapper_my_put_nbr_hexa, &wrapper_my_put_nbr_hexa_m,
+    int (*fptr []) (va_list ap, check_flags_t *flags) = {&wrapper_my_putstr,
+    &wrapper_my_putchar, &wrapper_my_put_nbr, &wrapper_my_put_nbr,
+    &my_print_percent, &wrapper_my_put_nbr_hexa, &wrapper_my_put_nbr_hexa_m,
     &wrapper_my_put_nbr_octal, &wrapper_my_put_nbr_unsigned_int,
     &wrapper_my_put_nbr_hexa, &wrapper_my_put_b, &wrapper_print_non_printable};
 
     for (int i = 0; flags[i] != '\0'; ++i)
         if (flags[i] == flag->flag)
-            return fptr[i](ap);
+            return fptr[i](ap, flag);
     return 0;
 }
 
-int my_print_percent(va_list ap)
+int my_print_percent(va_list ap, check_flags_t *flags)
 {
     write(1, "%", 1);
     return 1;

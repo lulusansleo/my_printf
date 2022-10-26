@@ -72,15 +72,15 @@
     char *comparativetable(char *str);
     void print_float(int frequency);
     int assign_function(va_list ap, check_flags_t *flags);
-    int wrapper_my_put_nbr(va_list ap);
-    int wrapper_my_put_nbr_hexa(va_list ap);
-    int wrapper_my_put_nbr_hexa_m(va_list ap);
-    int wrapper_my_put_nbr_octal(va_list ap);
-    int wrapper_my_put_nbr_unsigned_int(va_list ap);
-    int wrapper_my_putstr(va_list ap);
-    int wrapper_my_putchar(va_list ap);
+    int wrapper_my_put_nbr(va_list ap, check_flags_t *flags);
+    int wrapper_my_put_nbr_hexa(va_list ap, check_flags_t *flags);
+    int wrapper_my_put_nbr_hexa_m(va_list ap, check_flags_t *flags);
+    int wrapper_my_put_nbr_octal(va_list ap, check_flags_t *flags);
+    int wrapper_my_put_nbr_unsigned_int(va_list ap, check_flags_t *flags);
+    int wrapper_my_putstr(va_list ap, check_flags_t *flags);
+    int wrapper_my_putchar(va_list ap, check_flags_t *flags);
     int write_s(char *s, va_list ap);
-    int my_print_percent(va_list ap);
+    int my_print_percent(va_list ap, check_flags_t *flags);
     int my_printf(char *s, ...);
     long int my_put_nbr_base(long int nb, char *base);
     int my_nb_len(long int nb);
@@ -88,8 +88,12 @@
     int my_nb_len_base(long int nb, char *str);
     int what_flags(check_flags_t *flags, char *str, int i);
     void flags_reset(check_flags_t *flags);
-    int wrapper_my_put_b(va_list ap);
+    int wrapper_my_put_b(va_list ap, check_flags_t *flags);
     int my_print_non_printable(char *str);
-    int wrapper_print_non_printable(va_list ap);
+    int wrapper_print_non_printable(va_list ap, check_flags_t *flags);
+    int do_hex_hash(long int nb, check_flags_t *flags);
+    int do_hex_hash_maj(long int nb, check_flags_t *flags);
+    int do_oct_hash(long int nb, check_flags_t *flags);
+    int do_empty_int(long int nb, check_flags_t *flags);
 
 #endif /* !myh */

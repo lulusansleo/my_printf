@@ -40,7 +40,8 @@ SRC			=	./lib/my/my_compute_power_rec.c \
 				source/flags_order.c\
 				source/wrapper_third.c\
 				source/print_funct.c\
-				source/get_flags.c
+				source/get_flags.c\
+				source/do_flags.c
 
 O_FILES		=	*.o
 
