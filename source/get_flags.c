@@ -7,7 +7,7 @@
 
 #include "../include/my.h"
 
-check_flags_t flags_reset(check_flags_t *flags)
+void flags_reset(check_flags_t *flags)
 {
     flags->empty = 0;
     flags->hash = 0;
@@ -23,7 +23,7 @@ int is_format_flag(char c)
 {
     char *str = "dscixXfeEgG%oupn";
 
-    for (int i = 0; str[i] != '\n'; ++i)
+    for (int i = 0; str[i] != '\0'; ++i)
         if (str[i] == c)
             return 1;
     return 0;
@@ -44,7 +44,7 @@ int what_flags(check_flags_t *flags, char *str, int i)
             flags->empty = 1;
         i++;
     }
-    printf("flag is %c\n", flags->flag);
     flags->flag = str[i];
+//    printf("char = %c\n", str[i]);
     return i;
 }

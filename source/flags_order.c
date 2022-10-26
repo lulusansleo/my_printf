@@ -57,7 +57,8 @@ int check_flags_order(char *format, int i)
         i++;
     while (format[i] != '\0' && is_width(format[i]) != 0)
         i++;
-    if (is_argtype(format[i]) != 0)
+    if (is_argtype(format[i]) != 0) {
         return 1;
+    }
     return 0;
 }

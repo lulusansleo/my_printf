@@ -25,7 +25,7 @@ int write_s(char *s, va_list ap)
     check_flags_t *flags = malloc(sizeof (check_flags_t));
 
     for (int i = 0; s[i] != '\0'; ++i) {
-        if (s[i] == 37 && check_flags_order(s, i + 1)) {
+        if (s[i] == '%' && check_flags_order(s, i + 1)) {
             i++;
             flags_reset(flags);
             i = what_flags(flags, s, i);
@@ -35,7 +35,6 @@ int write_s(char *s, va_list ap)
             count += 1;
         }
     }
-    free(flags);
     return count;
 }
 
