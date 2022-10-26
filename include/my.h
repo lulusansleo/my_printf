@@ -90,5 +90,6 @@
     int my_nb_len_base(long int nb, char *str);
     int what_flags(check_flags_t *flags, char *str, int i);
     void flags_reset(check_flags_t *flags);
+    int wrapper_my_put_b(va_list ap);
 
 #endif /* !myh */

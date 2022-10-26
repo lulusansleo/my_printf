@@ -37,7 +37,7 @@ int is_width(char c)
 
 int is_argtype(char c)
 {
-    char *t = "scid%xXoupfeEgGn";
+    char *t = "scid%xXoupfeEgGnb";
     int k = 0;
 
     if (is_flag(c) == 1 || is_width(c) == 1)

@@ -6,7 +6,6 @@
 */
 
 #include "../include/my.h"
-#include <stdarg.h>
 
 int my_nb_len(long int nb)
 {

@@ -21,7 +21,7 @@ void flags_reset(check_flags_t *flags)
 
 int is_format_flag(char c)
 {
-    char *str = "dscixXfeEgG%oupn";
+    char *str = "dscixXfeEgG%oupnb";
 
     for (int i = 0; str[i] != '\0'; ++i)
         if (str[i] == c)
@@ -45,6 +45,5 @@ int what_flags(check_flags_t *flags, char *str, int i)
         i++;
     }
     flags->flag = str[i];
-//    printf("char = %c\n", str[i]);
     return i;
 }
