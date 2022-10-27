@@ -25,6 +25,11 @@
         char flag;
     } check_flags_t;
 
+   typedef union bit_float {
+       float f;
+       unsigned int a;
+   } bit_float_t;
+
     int get_arg_number(char *str);
     int my_reverse_nbr(int nb);
     int my_compute_power_rec(int nb , int p);

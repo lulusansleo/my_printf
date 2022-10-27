@@ -7,13 +7,8 @@
 
 #include "../include/my.h"
 
-typedef union bit_float {
-    float f;
-    unsigned int a;
-} bit_float_t;
-
 int display_float(long int s, int pow,
-                   long int w, long int d)
+                long int w, long int d)
 {
     int a = 0;
     int i = 0;

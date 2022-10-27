@@ -18,8 +18,8 @@ int my_nb_len(long int nb)
     } else {
         for (i = 1; nb < -9; ++i) {
             nb = nb / 10;
+            i += 1;
         }
-        i += 1;
     }
     return i;
 }
