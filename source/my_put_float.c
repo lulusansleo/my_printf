@@ -5,34 +5,53 @@
 ** Display a float.
 */
 
-#include "include/my.h"
+#include "../include/my.h"
+
+typedef union bit_float {
+    float f;
+    unsigned int a;
+} bit_float_t;
+
+int display_float(long int s, int pow,
+                   long int w, long int d)
+{
+    int a = 0;
+    int i = 0;
+    int n = my_nb_len(d);
+    if (s == 1) {
+        my_putchar('-');
+        a++;
+    }
+    my_put_nbr(w);
+    my_putchar('.');
+    while (i < pow - n) {
+        my_putchar(48);
+        i++;
+    }
+    my_put_nbr(d);
+    return n + s + my_nb_len(w);
+}
 
 int my_put_float(double nb)
 {
-    int pow = 6;
-    int nb_len = 0;
+    long int s = 0;
+    long int e = 0;
+    long int m = 0;
+    long int w_part = 0;
+    long int w_part_display = 0;
+    long int d_part = 0;
     int nb_len_return = 0;
-    long int n = 0;
-    int n2 = 0;
-    int n3 = 0;
-    long int i = 0;
-    double ten_pow = 1;
-    double nb2 = 0;
+    int pow = 6;
+    union bit_float data;
 
-    n = my_nb_len(nb);
-    nb = nb * my_compute_power_rec(10, pow);
-    n2 = my_nb_len(nb); 
-    n3 = n2 - n;
-    nb2 = nb / my_compute_power_rec(10, n2 - n);
-    my_put_nbr(nb2);
-    my_putchar('.');
-    ten_pow = my_compute_power_rec(10, n2);
-    while (n2 >= n3) {
-        i = nb / my_compute_power_rec(10, n2);
-        nb = nb - (i * my_compute_power_rec(10, n2));
-        n2--;
-    }
-    nb2 = nb / 1;
-    my_put_nbr(nb2);
-    return nb_len_return + 1;
+    data.f = nb;
+    s = data.a >> 31;
+    e = (data.a >> 23) & 0b011111111;
+    m = data.a  & 0b00000000011111111111111111111111;
+    w_part = m >> (23 - (e - 127));
+    w_part_display = w_part + my_compute_power_rec(2, (e - 127));
+    w_part = w_part << (23 - (e - 127));
+    d_part = (nb - w_part_display) * my_compute_power_rec(10, pow);
+    nb_len_return = display_float(s, pow, w_part_display, d_part);
+    return nb_len_return;
 }
