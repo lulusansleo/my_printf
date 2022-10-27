@@ -95,5 +95,5 @@
     int do_hex_hash_maj(long int nb, check_flags_t *flags);
     int do_oct_hash(long int nb, check_flags_t *flags);
     int do_empty_int(long int nb, check_flags_t *flags);
-
+    int my_put_float(double nb);
 #endif /* !myh */

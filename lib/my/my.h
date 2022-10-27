@@ -87,5 +87,5 @@
     int my_nb_len_base(long int nb, char *str);
     int what_flags(check_flags_t *flags, char *str, int i);
     check_flags_t flags_reset(check_flags_t *flags);
-
+    int my_put_float(double nb);
 #endif /* !myh */
