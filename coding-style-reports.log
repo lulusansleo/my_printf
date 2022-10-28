@@ -1,4 +1,4 @@
 ./a.out:1: MAJOR:C-O1
 ./libmy.a:1: MAJOR:C-O1
 ./main.c:1: MINOR:C-G1
-./main.c:13: INFO:C-A3
+./main.c:12: INFO:C-A3

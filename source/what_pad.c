@@ -16,13 +16,22 @@ char what_pad(check_flags_t *flags)
 
 void print_pads(char c, int diff)
 {
-    for (int i = 0; i < diff; i++)
+    for (int i = 0; i < diff; i++) {
         write(1, &c, 1);
+    }
 }
 
 void pad_number(check_flags_t *flags, int count, int nb)
 {
     if (my_nb_len(nb) < flags->max) {
+        for (int i = 0; i < flags->max - count + 1; i++)
+            write(1, "0", 1);
+    }
+}
+
+void pad_number_base(check_flags_t *flags, int count, int nb, char *base)
+{
+    if (my_nb_len_base(nb, base) < flags->max) {
         for (int i = 0; i < flags->max - count; i++)
             write(1, "0", 1);
     }

@@ -34,8 +34,8 @@ int do_empty_len(long int nb, check_flags_t *flags)
 
 int count_with_precision(check_flags_t *flags, int nb, char *base, int count)
 {
-    if (flags->max > my_nb_len(nb) + count)
-        count = flags->max;
+    if (flags->max > my_nb_len(nb))
+        count += flags->max;
     else
         count += my_nb_len(nb);
     return count;
