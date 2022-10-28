@@ -34,14 +34,14 @@ int my_put_float(double nb)
     long int m = 0;
     long int w_part = 0;
     long int w_part_display = 0;
-    long int d_part = 0;
+    unsigned long int d_part = 0;
     int nb_len_return = 0;
     int pow = 6;
     union bit_float data;
 
     data.f = nb;
     s = data.a >> 31;
-    e = (data.a >> 23) & 0b011111111;
+    e = (data.a >> 23) & 0b0111111110000000000000000000000;
     m = data.a  & 0b00000000011111111111111111111111;
     w_part_display = (long int) nb;
     d_part = (long int) ((nb - w_part_display) * my_compute_power_rec(10, pow));
