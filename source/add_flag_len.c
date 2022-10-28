@@ -34,10 +34,12 @@ int do_empty_len(long int nb, check_flags_t *flags)
 
 int count_with_precision(check_flags_t *flags, int nb, char *base, int count)
 {
-    if (flags->max > my_nb_len(nb))
+    if (flags->max > my_nb_len_base(nb, base)) {
         count += flags->max;
-    else
-        count += my_nb_len(nb);
+        if (flags->flag == 'o')
+            flags->hash = 0;
+    } else
+        count += my_nb_len_base(nb, base);
     return count;
 }
 

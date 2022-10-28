@@ -37,7 +37,7 @@ int my_nb_len_base(long int nb, char *base)
     } else {
         for (i = 1; nb < -len; ++i) {
             nb = nb / len;
-            i++;
+            i += 1;
         }
     }
     return i;
@@ -91,10 +91,9 @@ int wrapper_my_put_nbr(va_list ap, check_flags_t *flags)
 {
     int nb = va_arg(ap, int);
     int count = do_empty_len(nb, flags);
-    int diff; int tmp;
+    int diff;
     char pad = what_pad(flags);
 
-    tmp = count + my_nb_len(nb);
     count = count_with_precision(flags, nb, "0123456789", count);
     diff = flags->min - count;
     if (diff > 0 && !flags->minus) {
@@ -102,7 +101,7 @@ int wrapper_my_put_nbr(va_list ap, check_flags_t *flags)
         count = flags->min;
     }
     do_empty_int(nb, flags);
-    pad_number(flags, tmp, nb);
+    pad_number(flags, my_nb_len(nb));
     my_put_nbr(nb);
     if (diff > 0 && flags->minus) {
         print_pads(pad, diff);

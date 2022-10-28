@@ -112,6 +112,6 @@
     char *base, int count);
     int precision_str(char *str, char *cpy, int count,
     check_flags_t *flags);
-    void pad_number(check_flags_t *flags, int count, int nb);
+    void pad_number(check_flags_t *flags, int count);
     int wrapper_print_pointer(va_list ap, check_flags_t *flags);
 #endif /* !myh */
