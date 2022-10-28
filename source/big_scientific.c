@@ -5,9 +5,24 @@
 ** Flag for scientific notation E.
 */
 
-#include "include/my.h"
+#include "../include/my.h"
 
-void my_displays_e(long int e, double nb)
+int my_get_exponent(double nb)
+{
+    int n = 1;
+    int i = 1;
+
+    if (nb < 10) {
+        return 1;
+    }
+    while (nb > n) {
+        i++;
+        n = n * 10;
+    }
+    return i - 1;
+}
+
+void my_displays_big_e(long int e, double nb)
 {
     my_put_float(nb);
     if (e == 1) {
@@ -21,7 +36,7 @@ void my_displays_e(long int e, double nb)
     }
 }
 
-int scientific_notation_e(double nb)
+int scientific_notation_big_e(double nb)
 {
     long int s = 0;
     long int e = 0;
