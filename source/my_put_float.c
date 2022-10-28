@@ -44,7 +44,8 @@ int my_put_float(double nb)
     e = (data.a >> 23) & 0b0111111110000000000000000000000;
     m = data.a  & 0b00000000011111111111111111111111;
     w_part_display = (unsigned long int) nb;
-    d_part = (unsigned long int) ((nb - w_part_display) * my_compute_power_rec(10, pow));
+    d_part = (unsigned long int) ((nb - w_part_display) *
+    my_compute_power_rec(10, pow));
     nb_len_return = display_float(s, pow, w_part_display, d_part);
     return nb_len_return;
 }

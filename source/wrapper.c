@@ -9,7 +9,7 @@
 
 int my_nb_len(long int nb)
 {
-    int i;
+    int i = 0;
 
     if (nb > 0) {
         for (i = 1; nb > 9; ++i) {
@@ -37,27 +37,76 @@ int my_nb_len_base(long int nb, char *base)
     } else {
         for (i = 1; nb < -len; ++i) {
             nb = nb / len;
+            i++;
         }
-        i += 1;
     }
     return i;
 }
 
 int wrapper_my_putstr(va_list ap, check_flags_t *flags)
 {
-    return my_putstr(va_arg(ap, char *));
+    int count = 0;
+    char *str = va_arg(ap, char *);
+    char cpy[my_strlen(str)];
+    int diff = 0;
+
+    my_strcpy(cpy, str);
+    count = precision_str(str, cpy, count, flags);
+    diff = flags->min - count;
+    if (diff > 0 && !flags->minus) {
+        print_pads(' ', diff);
+        count += diff;
+    }
+    my_putstr(cpy);
+    if (diff > 0 && flags->minus) {
+        print_pads(' ', diff);
+        count += diff;
+    }
+    return count;
 }
 
 int wrapper_my_putchar(va_list ap, check_flags_t *flags)
 {
-    return my_putchar(va_arg(ap, int));
+    char c = va_arg(ap, int);
+    int count = 1;
+    int diff = 0;
+
+    if (flags->max == 0)
+        count = 0;
+    diff = flags->min -count;
+    if (diff > 0 && !flags->minus) {
+        print_pads(' ', diff);
+        count += diff;
+    }
+    if (count)
+        write(1, &c, 1);
+    if (diff > 0 && flags->minus) {
+        print_pads(' ', diff);
+        count += diff;
+    }
+    return count;
 }
 
 int wrapper_my_put_nbr(va_list ap, check_flags_t *flags)
 {
     int nb = va_arg(ap, int);
-    int count = do_empty_int(nb, flags);
+    int count = do_empty_len(nb, flags);
+    int diff; int tmp;
+    char pad = what_pad(flags);
 
+    tmp = count + my_nb_len(nb);
+    count = count_with_precision(flags, nb, "0123456789", count);
+    diff = flags->min - count;
+    if (diff > 0 && !flags->minus) {
+        print_pads(pad, diff);
+        count = flags->min;
+    }
+    do_empty_int(nb, flags);
+    pad_number(flags, tmp, nb);
     my_put_nbr(nb);
-    return my_nb_len(nb) + count;
+    if (diff > 0 && flags->minus) {
+        print_pads(pad, diff);
+        count = flags->min;
+    }
+    return count;
 }

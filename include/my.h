@@ -22,6 +22,7 @@
         int empty;
         int max;
         int min;
+        int precison;
         char flag;
     } check_flags_t;
 
@@ -96,9 +97,21 @@
     int wrapper_my_put_b(va_list ap, check_flags_t *flags);
     int my_print_non_printable(char *str);
     int wrapper_print_non_printable(va_list ap, check_flags_t *flags);
-    int do_hex_hash(long int nb, check_flags_t *flags);
-    int do_hex_hash_maj(long int nb, check_flags_t *flags);
-    int do_oct_hash(long int nb, check_flags_t *flags);
-    int do_empty_int(long int nb, check_flags_t *flags);
+    void do_hex_hash(long int nb, check_flags_t *flags);
+    void do_hex_hash_maj(long int nb, check_flags_t *flags);
+    void do_oct_hash(long int nb, check_flags_t *flags);
+    void do_empty_int(long int nb, check_flags_t *flags);
     int my_put_float(double nb);
+    char what_pad(check_flags_t *flags);
+    void print_pads(char c, int diff);
+    int is_flag(char c);
+    int do_empty_len(long int nb, check_flags_t *flags);
+    int do_oct_len(long int nb, check_flags_t *flags);
+    int do_hex_len(long int nb, check_flags_t *flags);
+    int count_with_precision(check_flags_t *flags, int nb,
+    char *base, int count);
+    int precision_str(char *str, char *cpy, int count,
+    check_flags_t *flags);
+    void pad_number(check_flags_t *flags, int count, int nb);
+    int wrapper_print_pointer(va_list ap, check_flags_t *flags);
 #endif /* !myh */

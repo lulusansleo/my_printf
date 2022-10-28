@@ -45,7 +45,7 @@ int assign_function(va_list ap, check_flags_t *flag)
     &wrapper_my_putchar, &wrapper_my_put_nbr, &wrapper_my_put_nbr,
     &my_print_percent, &wrapper_my_put_nbr_hexa, &wrapper_my_put_nbr_hexa_m,
     &wrapper_my_put_nbr_octal, &wrapper_my_put_nbr_unsigned_int,
-    &wrapper_my_put_nbr_hexa, &wrapper_my_put_b, &wrapper_print_non_printable};
+    &wrapper_print_pointer, &wrapper_my_put_b, &wrapper_print_non_printable};
 
     for (int i = 0; flags[i] != '\0'; ++i)
         if (flags[i] == flag->flag)

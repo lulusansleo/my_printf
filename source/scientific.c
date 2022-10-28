@@ -48,7 +48,7 @@ int scientific_notation_e(double nb)
     data.f = nb;
     s = data.a >> 31;
     e = my_get_exponent(nb);
-    
+
     nb = nb / my_compute_power_rec(10, e - 1);
     my_displays_e(e, nb);
     return 0;
