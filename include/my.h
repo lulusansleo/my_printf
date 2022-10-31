@@ -118,4 +118,5 @@
     int scientific_notation_e(double nb, int pow);
     int my_get_exponent(double nb);
     int my_put_g(double nb);
+    int my_put_big_g(double nb);
 #endif /* !myh */
