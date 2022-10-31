@@ -43,8 +43,10 @@ SRC			=	./lib/my/my_compute_power_rec.c \
 				source/get_flags.c\
 				source/do_flags.c\
 				source/what_pad.c\
-				source/add_flag_len.c
-
+				source/add_flag_len.c\
+				source/my_put_float.c\
+				source/scientific.c\
+				source/big_scientific.c
 O_FILES		=	*.o
 
 OBJ			=	$(SRC:.c=.o)

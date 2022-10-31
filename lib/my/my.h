@@ -26,7 +26,7 @@
 
     int get_arg_number(char *str);
     int my_reverse_nbr(int nb);
-    int my_compute_power_rec(int nb , int p);
+    int my_compute_power_rec(long int nb , int p);
     int my_compute_square_root(int nb);
     int my_find_prime_sup(int nb);
     int my_getnbr(char const *str);
@@ -88,4 +88,6 @@
     int what_flags(check_flags_t *flags, char *str, int i);
     check_flags_t flags_reset(check_flags_t *flags);
     int my_put_float(double nb);
+    int scientific_notation_big_e(double nb);
+    int scientific_notation_e(double nb);
 #endif /* !myh */
