@@ -101,7 +101,7 @@
     void do_hex_hash_maj(long int nb, check_flags_t *flags);
     void do_oct_hash(long int nb, check_flags_t *flags);
     void do_empty_int(long int nb, check_flags_t *flags);
-    int my_put_float(double nb);
+    int my_put_float(double nb, int pow);
     char what_pad(check_flags_t *flags);
     void print_pads(char c, int diff);
     int is_flag(char c);
@@ -114,6 +114,8 @@
     check_flags_t *flags);
     void pad_number(check_flags_t *flags, int count);
     int wrapper_print_pointer(va_list ap, check_flags_t *flags);
-    int scientific_notation_big_e(double nb);
-    int scientific_notation_e(double nb);
+    int scientific_notation_big_e(double nb, int pow);
+    int scientific_notation_e(double nb, int pow);
+    int my_get_exponent(double nb);
+    int my_put_g(double nb);
 #endif /* !myh */

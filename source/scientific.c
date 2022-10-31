@@ -31,7 +31,7 @@ int my_get_exponent(double nb)
 
 void my_display_e_second(long int e, double nb, long int e_sign)
 {
-    if (e < 10) {
+    if ((e < 10 && e_sign == 1) || (e - 1 < 10 && e_sign == 0)) {
         if (e_sign == 1) {
             my_putstr("e-0");
             my_put_nbr(e);
@@ -52,9 +52,9 @@ void my_display_e_second(long int e, double nb, long int e_sign)
     }
 }
 
-void my_displays_e(long int e, double nb, long int e_sign)
+void my_displays_e(long int e, double nb, long int e_sign, int pow)
 {
-    my_put_float(nb);
+    my_put_float(nb, pow);
     if (e == 1) {
         if (e_sign == 0)
             my_putstr("e+00");
@@ -65,7 +65,7 @@ void my_displays_e(long int e, double nb, long int e_sign)
     my_display_e_second(e, nb, e_sign);
 }
 
-int scientific_notation_e(double nb)
+int scientific_notation_e(double nb, int pow)
 {
     long int e = 0;
     long int e_sign = 0;
@@ -85,6 +85,6 @@ int scientific_notation_e(double nb)
     } else
         while (nb > 10)
             nb = nb / my_compute_power_rec(10, 1);
-    my_displays_e(e, nb, e_sign);
+    my_displays_e(e, nb, e_sign, pow);
     return (data.a >> 31) + 8 + 4;
 }

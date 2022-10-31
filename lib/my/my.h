@@ -87,7 +87,9 @@
     int my_nb_len_base(long int nb, char *str);
     int what_flags(check_flags_t *flags, char *str, int i);
     check_flags_t flags_reset(check_flags_t *flags);
-    int my_put_float(double nb);
-    int scientific_notation_big_e(double nb);
-    int scientific_notation_e(double nb);
+    int my_put_float(double nb, int pow);
+    int scientific_notation_big_e(double nb, int pow);
+    int scientific_notation_e(double nb, int pow);
+    int my_get_exponent(double nb);
+    int my_put_g(double nb);
 #endif /* !myh */
