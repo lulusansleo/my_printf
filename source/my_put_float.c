@@ -11,7 +11,7 @@ int display_float(int pow, long int w,
 double d)
 {
     int i = 0;
-    int n = my_nb_len(d);
+    int n = my_nb_len((long long int) d);
 
     my_put_nbr(w);
     my_putchar('.');
@@ -43,5 +43,5 @@ int my_put_float(double nb, int pow)
         pow--;
     }
     nb_len_return = display_float(pow_2, w_part_display, d_part);
-    return nb_len_return + (data.a >> 31);
+    return nb_len_return + (data.a >> 31) + 1;
 }
