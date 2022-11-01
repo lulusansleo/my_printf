@@ -9,6 +9,9 @@
 
 int do_hex_len(long int nb, check_flags_t *flags)
 {
+    if (flags->flag == 'p' && nb > 0)
+        if (flags->plus || flags->plus)
+            return 3;
     if (nb != 0 && flags->hash)
         return 2;
     return 0;

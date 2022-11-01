@@ -7,7 +7,7 @@
 
 #include "../include/my.h"
 
-int display_float(int pow, long int w,
+static int display_float(int pow, long int w,
 double d)
 {
     int i = 0;

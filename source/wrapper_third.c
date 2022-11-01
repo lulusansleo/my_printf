@@ -23,5 +23,11 @@ int wrapper_print_pointer(va_list ap, check_flags_t *flags)
 int wrapper_float(va_list ap, check_flags_t *flags)
 {
     double nb = va_arg(ap, double);
-    return my_put_float(nb, flags->max);
+    int ret;
+
+    if (flags->precison)
+        ret = my_put_float(nb, flags->max);
+    else
+        ret = my_put_float(nb, 6);
+    return ret;
 }

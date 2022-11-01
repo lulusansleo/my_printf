@@ -9,6 +9,12 @@
 
 void do_hex_hash(long int nb, check_flags_t *flags)
 {
+    if (flags->flag == 'p' && nb > 0) {
+        if (flags->plus)
+            write(1, "+", 1);
+        if (flags->empty && !flags->plus)
+            write(1, " ", 1);
+    }
     if (nb != 0 && flags->hash)
         write(1, "0x", 2);
 }
