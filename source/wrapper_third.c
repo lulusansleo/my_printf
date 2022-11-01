@@ -19,3 +19,9 @@ int wrapper_print_pointer(va_list ap, check_flags_t *flags)
     flags->hash = 1;
     return wrapper_my_put_nbr_hexa(ap, flags);
 }
+
+int wrapper_float(va_list ap, check_flags_t *flags)
+{
+    double nb = va_arg(ap, double);
+    return my_put_float(nb, flags->max);
+}
