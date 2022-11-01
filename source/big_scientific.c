@@ -31,7 +31,7 @@ int my_get_exponent_s(double nb)
 
 void my_display_big_e_second(long int e, double nb, long int e_sign)
 {
-    if (e < 10) {
+    if ((e < 10 && e_sign == 1) || (e - 1 < 10 && e_sign == 0)) {
         if (e_sign == 1) {
             my_putstr("E-0");
             my_put_nbr(e);
