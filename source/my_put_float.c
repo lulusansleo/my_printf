@@ -8,20 +8,19 @@
 #include "../include/my.h"
 
 int display_float(int pow, long int w,
-long int d)
+double d)
 {
     int i = 0;
     int n = my_nb_len(d);
+
     my_put_nbr(w);
-    while (i < pow - n && (n - 1) > 0) {
+    my_putchar('.');
+    my_put_nbr((long long int) d);
+    while (i < pow - n) {
         my_putchar(48);
         i++;
     }
-    if (d != 0) {
-        my_putchar('.');
-        my_put_nbr(d);
-    }
-    return n + my_nb_len(w);
+    return n + my_nb_len(w) + i;
 }
 
 int my_put_float(double nb, int pow)
@@ -39,11 +38,10 @@ int my_put_float(double nb, int pow)
     }
     w_part_display = (long long int) nb;
     d_part = nb - w_part_display;
-    pow = pow - my_nb_len(w_part_display);
     while (pow > 0) {
         d_part = d_part * 10;
         pow--;
     }
-    nb_len_return = display_float(pow_2 - 1, w_part_display, d_part);
+    nb_len_return = display_float(pow_2, w_part_display, d_part);
     return nb_len_return + (data.a >> 31);
 }
