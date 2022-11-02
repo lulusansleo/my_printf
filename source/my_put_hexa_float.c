@@ -55,5 +55,4 @@ int my_put_hexa_float(double nb)
     int e = my_get_exponent_two(nb);
 
     nb = my_get_two_with_nbr(nb, e);
-    printf("%f\n", nb * 16);
 }
