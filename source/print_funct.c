@@ -19,14 +19,14 @@ int my_print_non_printable(char *str)
     int count = 0;
 
     for (i = 0; str[i] != '\0'; i++) {
-        if (str[i] > 32 && str[i] < 127)
+        if (str[i] >= 32 && str[i] <= 127)
             my_putchar(str[i]);
         else {
             my_putchar('\\');
             print_zeros(str[i]);
             my_put_nbr_base(str[i], "01234567");
-            count += 4;
+            count += 3;
         }
     }
-    return i + count - 1;
+    return i + count;
 }
