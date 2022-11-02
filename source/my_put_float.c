@@ -7,6 +7,17 @@
 
 #include "../include/my.h"
 
+double my_round_float(double d, long int w, int pow)
+{
+    double d_copy = d;
+    int i = 0;
+
+    while (pow > 0) {
+        
+        pow--;
+    }
+    
+}
 static int display_float(int pow, long int w,
 double d)
 {
@@ -38,6 +49,7 @@ int my_put_float(double nb, int pow)
     }
     w_part_display = (long long int) nb;
     d_part = nb - w_part_display;
+    printf("%.7f\n", d_part);
     while (pow > 0) {
         d_part = d_part * 10;
         pow--;
