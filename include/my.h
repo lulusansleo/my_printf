@@ -125,4 +125,6 @@
     int my_put_big_g(double nb);
     int wrapper_point(va_list ap, check_flags_t *flags);
     void get_star(check_flags_t *flags, va_list ap);
+    int wrapper_notation_big(va_list ap, check_flags_t *flags);
+    int wrapper_notation(va_list ap, check_flags_t *flags);
 #endif /* !myh */

@@ -39,3 +39,15 @@ int wrapper_point(va_list ap, check_flags_t *flags)
     *ptr = flags->count;
     return 0;
 }
+
+int wrapper_notation(va_list ap, check_flags_t *flags)
+{
+    double nb = va_arg(ap, double);
+    int ret = 0;
+
+    if (flags->precison)
+        ret = scientific_notation_e(nb, flags->max);
+    else
+        ret = scientific_notation_e(nb, 6);
+    return ret;
+}

@@ -48,7 +48,8 @@ SRC			=	./lib/my/my_compute_power_rec.c \
 				source/scientific.c\
 				source/big_scientific.c\
 				source/flag_g.c\
-				source/get_star.c
+				source/get_star.c\
+				source/wrapper_fourth.c
 
 O_FILES		=	*.o
 
