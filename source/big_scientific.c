@@ -7,6 +7,16 @@
 
 #include "../include/my.h"
 
+double my_check_big_negative(double nb, int *ret)
+{
+    if (nb < 0) {
+        nb = nb * (-1);
+        my_putchar('-');
+        *ret = *ret + 1;
+    }
+    return nb;
+}
+
 int my_get_exponent_s(double nb)
 {
     unsigned long int n = 1;
@@ -29,53 +39,55 @@ int my_get_exponent_s(double nb)
     return i;
 }
 
-void my_display_big_e_second(long int e, double nb, long int e_sign)
+int my_display_big_e_second(long int e, double nb, long int e_sign)
 {
+    int return_value = 0;
     if ((e < 10 && e_sign == 1) || (e - 1 < 10 && e_sign == 0)) {
         if (e_sign == 1) {
-            my_putstr("E-0");
+            return_value += my_putstr("E-0");
             my_put_nbr(e);
         } else {
-            my_putstr("E+0");
+            return_value += my_putstr("E+0");
             my_put_nbr(e - 1);
         }
-        return;
+        return return_value + 1;
     } else {
         if (e_sign == 1) {
-            my_putstr("E-");
+            return_value += my_putstr("E-");
             my_put_nbr(e);
         } else {
-            my_putstr("E+");
+            return_value += my_putstr("E+");
             my_put_nbr(e - 1);
         }
-        return;
+        return return_value + 2;
     }
 }
 
-void my_displays_big_e(long int e, double nb, long int e_sign, int pow)
+int my_displays_big_e(long int e, double nb, long int e_sign, int pow)
 {
-    my_put_float(nb, pow);
+    int n = 0;
+
+    n += my_put_float(nb, pow);
     if (e == 1) {
         if (e_sign == 0)
-            my_putstr("E+00");
+            n += my_putstr("E+00");
         if (e_sign == 1)
-            my_putstr("E-01");
-        return;
+            n += my_putstr("E-01");
+        return n;
     }
-    my_display_big_e_second(e, nb, e_sign);
+    n += my_display_big_e_second(e, nb, e_sign);
+    return n;
 }
 
 int scientific_notation_big_e(double nb, int pow)
 {
     long int e = 0;
     long int e_sign = 0;
+    int return_value = 0;
     union bit_float data;
 
     data.f = nb;
-    if ((data.a >> 31) == 1) {
-        nb = nb * (-1);
-        my_putchar('-');
-    }
+    nb = my_check_big_negative(nb, &return_value);
     e = my_get_exponent_s(nb);
     if (e < 0) {
         e = e * (-1);
@@ -85,6 +97,6 @@ int scientific_notation_big_e(double nb, int pow)
     } else
         while (nb > 10)
             nb = nb / my_compute_power_rec(10, 1);
-    my_displays_big_e(e, nb, e_sign, pow);
-    return (data.a >> 31) + 8 + 4;
+    return_value = return_value + my_displays_big_e(e, nb, e_sign, pow);
+    return return_value;
 }

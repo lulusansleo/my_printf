@@ -20,7 +20,7 @@ double d)
         my_putchar(48);
         i++;
     }
-    return n + my_nb_len(w) + i;
+    return n + my_nb_len(w) + i + 1;
 }
 
 int my_put_float(double nb, int pow)
