@@ -13,11 +13,11 @@ double my_round_float(double d, long int w, int pow)
     int i = 0;
 
     while (pow > 0) {
-        
         pow--;
     }
-    
+    return d;
 }
+
 static int display_float(int pow, long int w,
 double d)
 {

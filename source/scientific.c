@@ -98,5 +98,6 @@ int scientific_notation_e(double nb, int pow)
         while (nb > 10)
             nb = nb / my_compute_power_rec(10, 1);
     return_value = return_value + my_displays_e(e, nb, e_sign, pow);
+    printf("%d\n", return_value);
     return return_value;
 }
