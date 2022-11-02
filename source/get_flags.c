@@ -58,7 +58,7 @@ int get_precision(int i, char *str, check_flags_t *flags)
     return i;
 }
 
-int what_flags(check_flags_t *flags, char *str, int i)
+int what_flags(check_flags_t *flags, char *str, int i, int count)
 {
     while (is_flag(str[i])) {
         if (str[i] == '-')
@@ -76,5 +76,6 @@ int what_flags(check_flags_t *flags, char *str, int i)
     i = get_width(i, str, flags);
     i = get_precision(i, str, flags);
     flags->flag = str[i];
+    flags->count = count;
     return i;
 }

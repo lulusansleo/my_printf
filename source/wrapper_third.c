@@ -31,3 +31,11 @@ int wrapper_float(va_list ap, check_flags_t *flags)
         ret = my_put_float(nb, 6);
     return ret;
 }
+
+int wrapper_point(va_list ap, check_flags_t *flags)
+{
+    int *ptr = va_arg(ap, int *);
+
+    *ptr = flags->count;
+    return 0;
+}

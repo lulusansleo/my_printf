@@ -24,6 +24,7 @@
         int min;
         int precison;
         char flag;
+        int count;
     } check_flags_t;
 
     typedef union bit_float {
@@ -92,7 +93,7 @@
     int my_nb_len(long int nb);
     int check_flags_order(char *format, int i);
     int my_nb_len_base(long int nb, char *str);
-    int what_flags(check_flags_t *flags, char *str, int i);
+    int what_flags(check_flags_t *flags, char *str, int i, int count);
     void flags_reset(check_flags_t *flags);
     int wrapper_my_put_b(va_list ap, check_flags_t *flags);
     int my_print_non_printable(char *str);
@@ -120,4 +121,5 @@
     int my_get_exponent(double nb);
     int my_put_g(double nb);
     int my_put_big_g(double nb);
+    int wrapper_point(va_list ap, check_flags_t *flags);
 #endif /* !myh */
