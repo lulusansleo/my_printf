@@ -18,6 +18,8 @@ void flags_reset(check_flags_t *flags)
     flags->plus = 0;
     flags->precison = 0;
     flags->flag = '\0';
+    flags->max_star = 0;
+    flags->min_star = 0;
 }
 
 int is_format_flag(char c)
@@ -38,6 +40,9 @@ int get_width(int i, char *str, check_flags_t *flags)
             flags->min += str[i] - '0';
             i++;
         }
+    } else if (str[i] == '*') {
+        flags->min_star = 1;
+        i++;
     }
     return i;
 }
@@ -50,6 +55,10 @@ int get_precision(int i, char *str, check_flags_t *flags)
         while (my_isnum(str[i])) {
             flags->max = flags->max * 10;
             flags->max += str[i] - '0';
+            i++;
+        }
+        if (str[i] == '*')  {
+            flags->max_star = 1;
             i++;
         }
         if (flags->zero)

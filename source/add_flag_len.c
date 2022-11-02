@@ -19,7 +19,8 @@ int do_hex_len(long int nb, check_flags_t *flags)
 
 int do_oct_len(long int nb, check_flags_t *flags)
 {
-    if (nb != 0 && flags->hash)
+    if (nb != 0 && flags->hash &&
+    my_nb_len_base(nb, "012345678") > flags->max)
         return 1;
     return 0;
 }

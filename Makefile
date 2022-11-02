@@ -47,7 +47,9 @@ SRC			=	./lib/my/my_compute_power_rec.c \
 				source/my_put_float.c\
 				source/scientific.c\
 				source/big_scientific.c\
-				source/flag_g.c
+				source/flag_g.c\
+				source/get_star.c
+
 O_FILES		=	*.o
 
 OBJ			=	$(SRC:.c=.o)

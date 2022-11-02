@@ -25,6 +25,8 @@
         int precison;
         char flag;
         int count;
+        int min_star;
+        int max_star;
     } check_flags_t;
 
     typedef union bit_float {
@@ -122,4 +124,5 @@
     int my_put_g(double nb);
     int my_put_big_g(double nb);
     int wrapper_point(va_list ap, check_flags_t *flags);
+    void get_star(check_flags_t *flags, va_list ap);
 #endif /* !myh */

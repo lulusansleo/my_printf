@@ -29,6 +29,7 @@ int write_s(char *s, va_list ap)
             i++;
             flags_reset(flags);
             i = what_flags(flags, s, i, count);
+            get_star(flags, ap);
             count += assign_function(ap, flags);
         } else {
             my_putchar(s[i]);
