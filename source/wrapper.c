@@ -10,7 +10,12 @@
 int my_nb_len(long int nb)
 {
     int i = 0;
+    int minus = 0;
 
+    if (nb < 0) {
+        nb = -nb;
+        minus = 1;
+    }
     if (nb > 0) {
         for (i = 1; nb > 9; ++i) {
             nb = nb / 10;
@@ -21,15 +26,20 @@ int my_nb_len(long int nb)
             i += 1;
         }
     }
-    return i;
+    return i + minus;
 }
 
 int my_nb_len_base(long int nb, char *base)
 {
 
     int i;
+    int minus = 0;
     int len = my_strlen(base);
 
+    if (nb < 0) {
+        nb = -nb;
+        minus = 1;
+    }
     if (nb > 0) {
         for (i = 1; nb > len; ++i) {
             nb = nb / len;
@@ -40,7 +50,7 @@ int my_nb_len_base(long int nb, char *base)
             i += 1;
         }
     }
-    return i;
+    return i + minus;
 }
 
 int wrapper_my_putstr(va_list ap, check_flags_t *flags)
