@@ -7,15 +7,23 @@
 
 #include "../include/my.h"
 
-double my_round_float(double d, long int w, int pow)
+double my_round_float(double *d_part, int pow,
+long int *w_part)
 {
-    double d_copy = d;
-    int i = 0;
+    double d_copy = *d_part;
+    int len_d_part_before = my_nb_len((long long int) *d_part);
+    int len_d_part_after = 0;
 
-    while (pow > 0) {
-        pow--;
+    d_copy = d_copy * 10;
+    if ((long long int) d_copy % 10 >= 5) {
+        *d_part = *d_part + 1.0;
     }
-    return d;
+    len_d_part_after = my_nb_len((long long int) *d_part);
+    if (len_d_part_after > len_d_part_before) {
+        *d_part = 0.0;
+        *w_part = *w_part + 1.0;
+    }
+    return 0;
 }
 
 static int display_float(int pow, long int w,
@@ -23,7 +31,6 @@ double d)
 {
     int i = 0;
     int n = my_nb_len((long long int) d);
-
     my_put_nbr(w);
     my_putchar('.');
     my_put_nbr((long long int) d);
@@ -54,5 +61,5 @@ int my_put_float(double nb, int pow)
         pow--;
     }
     nb_len_return = display_float(pow_2, w_part_display, d_part);
-    return nb_len_return + (data.a >> 31) + 1;
+    return nb_len_return + (data.a >> 31);
 }

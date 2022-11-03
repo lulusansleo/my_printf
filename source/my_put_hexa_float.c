@@ -7,6 +7,30 @@
 
 #include "../include/my.h"
 
+int my_display_hexa_float_nbr(long long int n)
+{
+    if (n >= 10) {
+        my_putchar((n % 10) + 'a');
+    } else if (n > 0) {
+        my_putchar(n + 48);
+    }
+    return 1;
+}
+
+int my_display_hexa_exponent(int e)
+{
+    my_putchar('p');
+    if (e < 0) {
+        my_putchar('-');
+        my_put_nbr(e);
+        return 2 + my_nb_len(e);
+    } else {
+        my_putchar('+');
+        my_put_nbr(e);
+        return 2 + my_nb_len(e);
+    }
+}
+
 double my_get_two_with_nbr(double nb, int e)
 {
     int i = 0;
@@ -53,7 +77,18 @@ int my_get_exponent_two(double nb)
 int my_put_hexa_float(double nb)
 {
     int e = my_get_exponent_two(nb);
+    long long int n = 0;
+    int i = 0;
 
     nb = my_get_two_with_nbr(nb, e);
+    my_putstr("0x1.");
+    while (nb > 0 && i < 14) {
+        nb = nb * 16;
+        n = ((long long int) nb % 16);
+        my_display_hexa_float_nbr(n);
+        nb = nb - ((long long int) nb);
+        i++;
+    }
+    my_display_hexa_exponent(e);
     return 0;
 }
