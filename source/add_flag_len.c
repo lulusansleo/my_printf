@@ -47,6 +47,17 @@ int count_with_precision(check_flags_t *flags, int nb, char *base, int count)
     return count;
 }
 
+int count_with_precision_decimal(check_flags_t *flags, int nb, int count)
+{
+    if (flags->max > my_nb_len(nb)) {
+        count += flags->max;
+        if (flags->flag == 'o')
+            flags->hash = 0;
+    } else
+        count += my_nb_len(nb);
+    return count;
+}
+
 int precision_str(char *str, char *cpy, int count, check_flags_t *flags)
 {
     if (flags->max < my_strlen(str) && flags->precison) {

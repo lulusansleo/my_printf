@@ -127,4 +127,5 @@
     void get_star(check_flags_t *flags, va_list ap);
     int wrapper_notation_big(va_list ap, check_flags_t *flags);
     int wrapper_notation(va_list ap, check_flags_t *flags);
+    int count_with_precision_decimal(check_flags_t *flags, int nb, int count);
 #endif /* !myh */
