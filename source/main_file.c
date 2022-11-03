@@ -36,6 +36,7 @@ int write_s(char *s, va_list ap)
             count += 1;
         }
     }
+    free(flags);
     return count;
 }
 

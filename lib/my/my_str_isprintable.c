@@ -9,7 +9,7 @@
 
 int my_isprintable(char c)
 {
-    if (c >= 32 && c <= 127)
+    if (c >= 32)
         return 1;
     return 1;
 }

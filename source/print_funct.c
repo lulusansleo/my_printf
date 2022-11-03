@@ -19,7 +19,7 @@ int my_print_non_printable(char *str)
     int count = 0;
 
     for (i = 0; str[i] != '\0'; i++) {
-        if (str[i] >= 32 && str[i] <= 127)
+        if (str[i] >= 32)
             my_putchar(str[i]);
         else {
             my_putchar('\\');

@@ -12,7 +12,6 @@ long int my_put_nbr(long int n)
     long int nb = n;
 
     if (nb < 0) {
-        my_putchar('-');
         nb = -nb;
     }
     if (nb >= 10) {
@@ -31,7 +30,6 @@ long int my_put_nbr_base(long int n, char *base)
     long int nb = n;
 
     if (nb < 0) {
-        my_putchar('-');
         nb = -nb;
     }
     if (nb >= len) {
