@@ -32,9 +32,7 @@ int do_empty_len(long int nb, check_flags_t *flags)
             return 1;
         if (flags->empty)
             return 1;
-    } else if (nb < 0 && my_nb_len_base(nb, "0123456789")
-    < flags->max)
-        return 1;
+    }
     return 0;
 }
 

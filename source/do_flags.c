@@ -38,7 +38,6 @@ void do_empty_int(long int nb, check_flags_t *flags)
             write(1, "+", 1);
             return;
         }
-            write(1, "-", 1);
         if (flags->empty)
             write(1, " ", 1);
     } else if (nb < 0)
