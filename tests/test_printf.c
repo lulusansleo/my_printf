@@ -24,10 +24,10 @@ Test(my_putstr, my_test_str, .init=redirect_stdout)
 
 Test(my_put_nbr, my_test_nbr, .init=redirect_stdout)
 {
-    int n = 124556;
+    int n = 12123456;
 
     my_printf("%d\n", n);
-    cr_assert_stdout_eq_str("124556\n");
+    cr_assert_stdout_eq_str("12123456\n");
 }
 
 Test(scientific_notation_e, my_test_science, .init=redirect_stdout)
@@ -44,4 +44,46 @@ Test(scientific_notation_big_e, my_test_big_science, .init=redirect_stdout)
 
     my_printf("%E\n", nb);
     cr_assert_stdout_eq_str("1.122324E+07\n");
+}
+
+Test(my_put_float, my_test_put_float_nbr, .init=redirect_stdout)
+{
+    double n = 121.23456;
+
+    my_printf("%f\n", n);
+    cr_assert_stdout_eq_str("121.234560\n");
+}
+
+Test(my_put_hexa, my_test_nbr_hexa, .init=redirect_stdout)
+{
+    int n = -1234;
+
+    my_printf("%x\n", n);
+    cr_assert_stdout_eq_str("fffffb2e\n");
+}
+
+Test(my_put_hexa_big, my_test_nbr_hexa_big, .init=redirect_stdout)
+{
+    int n = -1234;
+
+    my_printf("%X\n", n);
+    cr_assert_stdout_eq_str("FFFFFB2E\n");
+}
+
+Test(my_put_modulo, my_test_modulo, .init=redirect_stdout)
+{
+    my_printf("%%\n");
+    cr_assert_stdout_eq_str("%\n");
+}
+
+Test(my_is_nothing, my_test_nothing, .init=redirect_stdout)
+{
+    my_printf("Hello my name is Aurelien and i like hess\n");
+    cr_assert_stdout_eq_str("Hello my name is Aurelien and i like hess\n");
+}
+
+Test(my_non_existant_flag, my_test_non_flag, .init=redirect_stdout)
+{
+    my_printf("%w\n", 12);
+    cr_assert_stdout_eq_str("%w\n");
 }
