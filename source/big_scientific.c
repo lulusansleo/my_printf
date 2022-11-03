@@ -39,7 +39,7 @@ int my_get_exponent_s(double nb)
     return i;
 }
 
-int my_display_big_e_second(long int e, double nb, long int e_sign)
+int my_display_big_e_second(long int e, long int e_sign)
 {
     int return_value = 0;
     if ((e < 10 && e_sign == 1) || (e - 1 < 10 && e_sign == 0)) {
@@ -75,7 +75,7 @@ int my_displays_big_e(long int e, double nb, long int e_sign, int pow)
             n += my_putstr("E-01");
         return n;
     }
-    n += my_display_big_e_second(e, nb, e_sign);
+    n += my_display_big_e_second(e, e_sign);
     return n;
 }
 
@@ -84,9 +84,7 @@ int scientific_notation_big_e(double nb, int pow)
     long int e = 0;
     long int e_sign = 0;
     int return_value = 0;
-    union bit_float data;
 
-    data.f = nb;
     nb = my_check_big_negative(nb, &return_value);
     e = my_get_exponent_s(nb);
     if (e < 0) {
