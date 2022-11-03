@@ -27,8 +27,7 @@ int is_width(char c)
     if (is_flag(c == 1)) {
         return 0;
     }
-    if ((c >= '0' && c <= '9') || c == '.'
-        || c == '*') {
+    if (my_isnum(c) || c == '*') {
         return 1;
     } else {
         return 0;
@@ -57,6 +56,11 @@ int check_flags_order(char *format, int i)
         i++;
     while (format[i] != '\0' && is_width(format[i]) != 0)
         i++;
+    if (format[i] == '.') {
+        i++;
+        while (format[i] != '\0' && is_width(format[i]) != 0)
+            i++;
+    }
     if (is_argtype(format[i]) != 0) {
         return 1;
     }
