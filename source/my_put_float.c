@@ -49,7 +49,6 @@ int my_put_float(double nb, int pow)
     }
     w_part_display = (long long int) nb;
     d_part = nb - w_part_display;
-    printf("%.7f\n", d_part);
     while (pow > 0) {
         d_part = d_part * 10;
         pow--;
