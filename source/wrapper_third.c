@@ -34,7 +34,7 @@ int wrapper_float(va_list ap, check_flags_t *flags)
 
 int wrapper_point(va_list ap, check_flags_t *flags)
 {
-    int *ptr = va_arg(ap, int *);
+    int *ptr = va_arg(ap, void *);
 
     *ptr = flags->count;
     return 0;

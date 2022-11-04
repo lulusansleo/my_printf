@@ -71,7 +71,7 @@ int my_get_exponent_two(double nb)
     }
 }
 
-int my_put_hexa_float(double nb)
+int my_put_hexa_float(long double nb)
 {
     int e = my_get_exponent_two(nb);
     int return_value = 0;

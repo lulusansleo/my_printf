@@ -7,7 +7,7 @@
 
 #include "../include/my.h"
 
-int do_hex_len(long int nb, check_flags_t *flags)
+int do_hex_len(long long int nb, check_flags_t *flags)
 {
     if (flags->flag == 'p' && nb > 0)
         if (flags->plus || flags->plus)
@@ -17,7 +17,7 @@ int do_hex_len(long int nb, check_flags_t *flags)
     return 0;
 }
 
-int do_oct_len(long int nb, check_flags_t *flags)
+int do_oct_len(long long int nb, check_flags_t *flags)
 {
     if (nb != 0 && flags->hash &&
     my_nb_len_base(nb, "012345678") > flags->max)
@@ -25,7 +25,7 @@ int do_oct_len(long int nb, check_flags_t *flags)
     return 0;
 }
 
-int do_empty_len(long int nb, check_flags_t *flags)
+int do_empty_len(long long int nb, check_flags_t *flags)
 {
     if (nb > 0) {
         if (flags->plus)
@@ -36,7 +36,8 @@ int do_empty_len(long int nb, check_flags_t *flags)
     return 0;
 }
 
-int count_with_precision(check_flags_t *flags, int nb, char *base, int count)
+int count_with_precision(check_flags_t *flags,
+long long int nb, char *base, int count)
 {
     if (flags->max > my_nb_len_base(nb, base)) {
         count += flags->max;
@@ -47,7 +48,8 @@ int count_with_precision(check_flags_t *flags, int nb, char *base, int count)
     return count;
 }
 
-int count_with_precision_decimal(check_flags_t *flags, int nb, int count)
+int count_with_precision_decimal(check_flags_t *flags,
+long long int nb, int count)
 {
     if (flags->max > my_nb_len(nb)) {
         count += flags->max;
@@ -55,15 +57,5 @@ int count_with_precision_decimal(check_flags_t *flags, int nb, int count)
             flags->hash = 0;
     } else
         count += my_nb_len(nb);
-    return count;
-}
-
-int precision_str(char *str, char *cpy, int count, check_flags_t *flags)
-{
-    if (flags->max < my_strlen(str) && flags->precison) {
-        count = flags->max;
-        cpy[flags->max] = '\0';
-    } else
-        count += my_strlen(str);
     return count;
 }

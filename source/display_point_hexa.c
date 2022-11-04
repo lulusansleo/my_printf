@@ -7,7 +7,7 @@
 
 #include "../include/my.h"
 
-int my_put_point(double nb)
+int my_put_point(long double nb)
 {
     nb = nb - 1.0;
     if (nb > 0) {

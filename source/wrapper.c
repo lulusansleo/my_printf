@@ -7,7 +7,7 @@
 
 #include "../include/my.h"
 
-int my_nb_len(long int nb)
+int my_nb_len(long long int nb)
 {
     int i = 0;
     int minus = 0;
@@ -29,7 +29,7 @@ int my_nb_len(long int nb)
     return i + minus;
 }
 
-int my_nb_len_base(long int nb, char *base)
+int my_nb_len_base(long long int nb, char *base)
 {
 
     int i;
@@ -92,23 +92,20 @@ int wrapper_my_putchar(va_list ap, check_flags_t *flags)
 
 int wrapper_my_put_nbr(va_list ap, check_flags_t *flags)
 {
-    int nb = va_arg(ap, int);
-    int count = do_empty_len(nb, flags);
-    int diff;
-    char pad = what_pad(flags);
-
-    count = count_with_precision_decimal(flags, nb, count);
-    diff = flags->min - count;
-    if (diff > 0 && !flags->minus) {
-        print_pads(pad, diff);
-        count = flags->min;
-    }
-    do_empty_int(nb, flags);
-    pad_number(flags, my_nb_len(nb));
-    my_put_nbr(nb);
-    if (diff > 0 && flags->minus) {
-        print_pads(pad, diff);
-        count = flags->min;
-    }
-    return count;
+    int_len_t nb;
+    if (flags->conversion == 'y')
+        nb.long_longy = (long long) va_arg(ap, int);
+    if (flags->conversion == 'l')
+        nb.longy = va_arg(ap, long);
+    if (flags->conversion == 'z')
+        nb.sizy = va_arg(ap, size_t);
+    if (flags->conversion == 'h')
+        nb.shorty = (short) va_arg(ap, int);
+    if (flags->conversion == 'j')
+        nb.maxy = va_arg(ap, __intmax_t);
+    if (flags->conversion == 'H')
+        nb.chary = va_arg(ap, signed );
+    if (flags->conversion == '0')
+        nb.inty = va_arg(ap, int);
+    return do_my_put_nbr(nb.long_longy, flags);
 }

@@ -37,6 +37,7 @@
 
     typedef union int_len {
         short int shorty;
+        char chary;
         long int longy;
         long long int long_longy;
         int inty;
@@ -139,4 +140,10 @@
     int wrapper_notation(va_list ap, check_flags_t *flags);
     int count_with_precision_decimal(check_flags_t *flags,
     long long int nb, int count);
+    int wrapper_put_hexa_float(va_list ap, check_flags_t *flags);
+    int my_put_hexa_float(long double nb);
+    int my_put_point(long double nb);
+    int do_my_put_nbr(long long int nb, check_flags_t *flags);
+    int is_length_modifier(char c, int order);
+    int get_specifier(int i, char *str, check_flags_t *flags);
 #endif /* !myh */

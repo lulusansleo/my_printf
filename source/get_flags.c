@@ -20,6 +20,7 @@ void flags_reset(check_flags_t *flags)
     flags->flag = '\0';
     flags->max_star = 0;
     flags->min_star = 0;
+    flags->conversion = '0';
 }
 
 int is_format_flag(char c)
@@ -84,6 +85,7 @@ int what_flags(check_flags_t *flags, char *str, int i, int count)
     }
     i = get_width(i, str, flags);
     i = get_precision(i, str, flags);
+    i = get_specifier(i, str, flags);
     flags->flag = str[i];
     flags->count = count;
     return i;

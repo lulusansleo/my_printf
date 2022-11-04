@@ -39,7 +39,8 @@ int is_argtype(char c)
     char *t = "scid%xXoupfeEgGnbSaA";
     int k = 0;
 
-    if (is_flag(c) == 1 || is_width(c) == 1)
+    if (is_flag(c) == 1 || is_width(c) == 1 ||
+    is_length_modifier(c, 1))
         return 0;
     while (t[k] != '\0') {
         if (c == t[k]) {
@@ -76,17 +77,17 @@ int check_flags_order(char *format, int i)
         i++;
     while (format[i] != '\0' && is_width(format[i]) != 0)
         i++;
-    if (format[i] == '.') {
+    if (format[i] == '.')
         i++;
         while (format[i] != '\0' && is_width(format[i]) != 0)
             i++;
+    if (is_length_modifier(format[i], 1)) {
+        while (format[i] != '\0' && is_length_modifier(format[i], l) != 0) {
+            i++;
+            l++;
+        }
     }
-    while (format[i] != '\0' && is_length_modifier(format[i], l) != 0) {
-        i++;
-        l++;
-    }
-    if (is_argtype(format[i]) != 0) {
+    if (is_argtype(format[i]) != 0)
         return 1;
-    }
     return 0;
 }

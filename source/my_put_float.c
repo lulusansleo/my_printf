@@ -29,7 +29,6 @@ static int display_float(int pow, long int w,
 double d)
 {
     int i = 0;
-    int j = 0;
     int n = my_nb_len((long long int) d);
     int m = my_nb_len(w);
 

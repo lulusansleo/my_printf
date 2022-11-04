@@ -7,7 +7,7 @@
 
 #include "../include/my.h"
 
-void do_hex_hash(long int nb, check_flags_t *flags)
+void do_hex_hash(long long int nb, check_flags_t *flags)
 {
     if (flags->flag == 'p' && nb > 0) {
         if (flags->plus)
@@ -19,19 +19,19 @@ void do_hex_hash(long int nb, check_flags_t *flags)
         write(1, "0x", 2);
 }
 
-void do_hex_hash_maj(long int nb, check_flags_t *flags)
+void do_hex_hash_maj(long long int nb, check_flags_t *flags)
 {
     if (nb != 0 && flags->hash)
         write(1, "0X", 2);
 }
 
-void do_oct_hash(long int nb, check_flags_t *flags)
+void do_oct_hash(long long int nb, check_flags_t *flags)
 {
     if (nb != 0 && flags->hash)
         write(1, "0", 1);
 }
 
-void do_empty_int(long int nb, check_flags_t *flags)
+void do_empty_int(long long int nb, check_flags_t *flags)
 {
     if (nb > 0) {
         if (flags->plus) {
