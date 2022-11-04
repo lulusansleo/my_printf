@@ -54,7 +54,6 @@ SRC			=	./lib/my/my_compute_power_rec.c \
 				source/my_put_hexa_float.c\
 				source/precision.c\
 				source/get_specifier.c\
-				source/do_print.c
 
 O_FILES		=	*.o
 
