@@ -19,6 +19,22 @@ int wrapper_notation_big(va_list ap, check_flags_t *flags)
     return ret;
 }
 
+int wrapper_put_g(va_list ap, check_flags_t *flags)
+{
+    double nb = va_arg(ap, double);
+
+    (void) flags;
+    return my_put_g(nb);
+}
+
+int wrapper_put_big_g(va_list ap, check_flags_t *flags)
+{
+    double nb = va_arg(ap, double);
+
+    (void) flags;
+    return my_put_big_g(nb);
+}
+
 int wrapper_put_hexa_float(va_list ap, check_flags_t *flags)
 {
     double nb = va_arg(ap, double);

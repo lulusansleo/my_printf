@@ -155,4 +155,6 @@
     int my_display_big_e_second(long int e, long int e_sign);
     int my_displays_big_g(long int e, double nb, long int e_sign, int pow);
     int scientific_notation_big_g(double nb, int pow);
+    int wrapper_put_big_g(va_list ap, check_flags_t *flags);
+    int wrapper_put_g(va_list ap, check_flags_t *flags);
 #endif /* !myh */
