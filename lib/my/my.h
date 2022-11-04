@@ -12,6 +12,7 @@
     #include <stdlib.h>
     #include <unistd.h>
     #include <stdarg.h>
+    #include <stdio.h>
 
     typedef struct check_flags {
         int hash;
@@ -21,8 +22,27 @@
         int empty;
         int max;
         int min;
+        int precison;
         char flag;
+        int count;
+        int min_star;
+        int max_star;
+        char conversion;
     } check_flags_t;
+
+    typedef union bit_float {
+        float f;
+        unsigned int a;
+    } bit_float_t;
+
+    typedef union int_len {
+        short int shorty;
+        long int longy;
+        long long int long_longy;
+        int inty;
+        size_t sizy;
+        __uintmax_t maxy;
+    }   int_len_t;
 
     int get_arg_number(char *str);
     int my_reverse_nbr(int nb);
@@ -32,7 +52,7 @@
     int my_getnbr(char const *str);
     int my_is_prime(int nb);
     int my_isneg(int nb);
-    long int my_put_nbr(long int nb);
+    long long int my_put_nbr(long long int nb);
     int my_putchar(char c);
     int my_putstr(char const *str);
     char *my_revstr(char *str);
@@ -71,28 +91,52 @@
     char *comparativetable(char *str);
     void print_float(int frequency);
     int assign_function(va_list ap, check_flags_t *flags);
-    int wrapper_my_put_nbr(va_list ap);
-    int wrapper_my_put_nbr_hexa(va_list ap);
-    int wrapper_my_put_nbr_hexa_m(va_list ap);
-    int wrapper_my_put_nbr_octal(va_list ap);
-    int wrapper_my_put_nbr_unsigned_int(va_list ap);
-    int wrapper_my_putstr(va_list ap);
-    int wrapper_my_putchar(va_list ap);
+    int wrapper_my_put_nbr(va_list ap, check_flags_t *flags);
+    int wrapper_my_put_nbr_hexa(va_list ap, check_flags_t *flags);
+    int wrapper_my_put_nbr_hexa_m(va_list ap, check_flags_t *flags);
+    int wrapper_my_put_nbr_octal(va_list ap, check_flags_t *flags);
+    int wrapper_my_put_nbr_unsigned_int(va_list ap, check_flags_t *flags);
+    int wrapper_my_putstr(va_list ap, check_flags_t *flags);
+    int wrapper_my_putchar(va_list ap, check_flags_t *flags);
     int write_s(char *s, va_list ap);
-    int my_print_percent(va_list ap);
+    int my_print_percent(va_list ap, check_flags_t *flags);
     int my_printf(char *s, ...);
-    long int my_put_nbr_base(long int nb, char *base);
-    int my_nb_len(long int nb);
+    long long int my_put_nbr_base(long long int nb, char *base);
+    int my_nb_len(long long int nb);
     int check_flags_order(char *format, int i);
-    int my_nb_len_base(long int nb, char *str);
-    int what_flags(check_flags_t *flags, char *str, int i);
-    check_flags_t flags_reset(check_flags_t *flags);
+    int my_nb_len_base(long long int nb, char *str);
+    int what_flags(check_flags_t *flags, char *str, int i, int count);
+    void flags_reset(check_flags_t *flags);
+    int wrapper_my_put_b(va_list ap, check_flags_t *flags);
+    int my_print_non_printable(char *str);
+    int wrapper_print_non_printable(va_list ap, check_flags_t *flags);
+    void do_hex_hash(long long int nb, check_flags_t *flags);
+    void do_hex_hash_maj(long long int nb, check_flags_t *flags);
+    void do_oct_hash(long long int nb, check_flags_t *flags);
+    void do_empty_int(long long int nb, check_flags_t *flags);
     int my_put_float(double nb, int pow);
+    char what_pad(check_flags_t *flags);
+    void print_pads(char c, int diff);
+    int is_flag(char c);
+    int do_empty_len(long long int nb, check_flags_t *flags);
+    int do_oct_len(long long int nb, check_flags_t *flags);
+    int do_hex_len(long long int nb, check_flags_t *flags);
+    int count_with_precision(check_flags_t *flags,
+    long long int nb, char *base, int count);
+    int precision_str(char *str, char *cpy, int count,
+    check_flags_t *flags);
+    void pad_number(check_flags_t *flags, int count);
+    int wrapper_print_pointer(va_list ap, check_flags_t *flags);
+    int wrapper_float(va_list ap, check_flags_t *flags);
     int scientific_notation_big_e(double nb, int pow);
     int scientific_notation_e(double nb, int pow);
     int my_get_exponent(double nb);
     int my_put_g(double nb);
     int my_put_big_g(double nb);
-    int my_put_point(double nb);
-    int my_put_hexa_float(double nb);
+    int wrapper_point(va_list ap, check_flags_t *flags);
+    void get_star(check_flags_t *flags, va_list ap);
+    int wrapper_notation_big(va_list ap, check_flags_t *flags);
+    int wrapper_notation(va_list ap, check_flags_t *flags);
+    int count_with_precision_decimal(check_flags_t *flags,
+    long long int nb, int count);
 #endif /* !myh */

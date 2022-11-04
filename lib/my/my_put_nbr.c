@@ -7,9 +7,9 @@
 
 #include "my.h"
 
-long int my_put_nbr(long int n)
+long long int my_put_nbr(long long int n)
 {
-    long int nb = n;
+    long long int nb = n;
 
     if (nb < 0) {
         nb = -nb;
@@ -24,10 +24,10 @@ long int my_put_nbr(long int n)
     return 0;
 }
 
-long int my_put_nbr_base(long int n, char *base)
+long long int my_put_nbr_base(long long int n, char *base)
 {
     int len = my_strlen(base);
-    long int nb = n;
+    long long int nb = n;
 
     if (nb < 0) {
         nb = -nb;
