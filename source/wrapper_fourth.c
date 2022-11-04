@@ -24,6 +24,7 @@ int wrapper_put_hexa_float(va_list ap, check_flags_t *flags)
     double nb = va_arg(ap, double);
     int ret = 0;
 
+    (void) flags;
     ret = my_put_hexa_float(nb);
     return ret;
 }

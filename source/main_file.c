@@ -59,6 +59,8 @@ int assign_function(va_list ap, check_flags_t *flag)
 
 int my_print_percent(va_list ap, check_flags_t *flags)
 {
+    (void) flags;
+    (void) ap;
     write(1, "%", 1);
     return 1;
 }

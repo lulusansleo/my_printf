@@ -77,10 +77,11 @@ int check_flags_order(char *format, int i)
         i++;
     while (format[i] != '\0' && is_width(format[i]) != 0)
         i++;
-    if (format[i] == '.')
+    if (format[i] == '.') {
         i++;
         while (format[i] != '\0' && is_width(format[i]) != 0)
             i++;
+    }
     if (is_length_modifier(format[i], 1)) {
         while (format[i] != '\0' && is_length_modifier(format[i], l) != 0) {
             i++;

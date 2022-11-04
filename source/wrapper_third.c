@@ -11,6 +11,7 @@ int wrapper_print_non_printable(va_list ap, check_flags_t *flags)
 {
     char *str = va_arg(ap, char *);
 
+    (void) flags;
     return my_print_non_printable(str);
 }
 
