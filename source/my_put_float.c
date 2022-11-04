@@ -29,15 +29,18 @@ static int display_float(int pow, long int w,
 double d)
 {
     int i = 0;
+    int j = 0;
     int n = my_nb_len((long long int) d);
+    int m = my_nb_len(w);
+
     my_put_nbr(w);
     my_putchar('.');
-    my_put_nbr((long long int) d);
     while (i < pow - n) {
         my_putchar(48);
         i++;
     }
-    return n + my_nb_len(w) + i + 1;
+    my_put_nbr((long long int) d);
+    return n + m + i + 1;
 }
 
 int my_put_float(double nb, int pow)
