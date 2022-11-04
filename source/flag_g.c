@@ -61,10 +61,15 @@ int my_put_g(double nb)
     long int e = my_get_exponent(nb);
     int nbr_len = 0;
 
+    if (nb < 0) {
+        write(1, "-", 1);
+        nb = nb * -1;
+        nbr_len++;
+    }
     if (e < -4 || e > 6) {
-        nbr_len = scientific_notation_g(nb, 6 - 1);
+        nbr_len += scientific_notation_g(nb, 6 - 1);
     } else {
-        nbr_len = my_detect_decimal(nb, 6 - e);
+        nbr_len += my_detect_decimal(nb, 6 - e);
     }
     return nbr_len;
 }
@@ -74,10 +79,15 @@ int my_put_big_g(double nb)
     long int e = my_get_exponent(nb);
     int nbr_len = 0;
 
+    if (nb < 0) {
+        write(1, "-", 1);
+        nb = nb * -1;
+        nbr_len++;
+    }
     if (e < -4 || e > 6) {
-        nbr_len = scientific_notation_big_g(nb, 6 - 1);
+        nbr_len += scientific_notation_big_g(nb, 6 - 1);
     } else {
-        nbr_len = my_detect_decimal(nb, 6 - e);
+        nbr_len += my_detect_decimal(nb, 6 - e);
     }
     return nbr_len;
 }

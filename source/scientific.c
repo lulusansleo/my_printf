@@ -22,6 +22,8 @@ int my_get_exponent(double nb)
     unsigned long int n = 1;
     int i = 1;
 
+    if (nb < 0)
+        nb = -nb;
     if ((long int) nb == 0) {
         while ((long int) nb == 0) {
             nb = nb * my_compute_power_rec(10, 1);
