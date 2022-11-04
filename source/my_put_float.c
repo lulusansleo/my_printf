@@ -42,6 +42,26 @@ double d)
     return n + m + i + 1;
 }
 
+int display_float_g(int pow, long int w,
+double d)
+{
+    int i = 0;
+    int n = my_nb_len((long long int) d);
+    int m = my_nb_len(w);
+    long long int nb = (long long int) d;
+
+    my_put_nbr(w);
+    my_putchar('.');
+    while (i < pow - n) {
+        my_putchar(48);
+        i++;
+    }
+    while (nb % 10 == 0)
+        nb = nb / 10;
+    my_put_nbr(nb);
+    return n + m + i + 1;
+}
+
 int my_put_float(double nb, int pow)
 {
     long long int w_part_display = 0;
