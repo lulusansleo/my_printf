@@ -7,8 +7,7 @@
 
 #include "../include/my.h"
 
-double my_round_float(double *d_part, int pow,
-long int *w_part)
+double my_round_float(double *d_part, long long int *w_part)
 {
     double d_copy = *d_part;
     int len_d_part_before = my_nb_len((long long int) *d_part);
@@ -57,9 +56,10 @@ int my_put_float(double nb, int pow)
     w_part_display = (long long int) nb;
     d_part = nb - w_part_display;
     while (pow > 0) {
-        d_part = d_part * 10;
+        d_part = d_part * 10.0;
         pow--;
     }
+    my_round_float(&d_part, &w_part_display);
     nb_len_return = display_float(pow_2, w_part_display, d_part);
     return nb_len_return + (data.a >> 31);
 }

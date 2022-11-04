@@ -55,7 +55,6 @@ int my_get_exponent_two(double nb)
 {
     double n = 1;
     int pow = 0;
-    int limit = 0;
 
     if (nb >= 1) {
         while (nb >= n) {
