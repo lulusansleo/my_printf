@@ -94,7 +94,7 @@ Test(my_put_float_second, my_test_float_two, .init=redirect_stdout)
     cr_assert_stdout_eq_str("17178227612323.000000\n");
 }
 
-Test(my_put_float_second, my_test_float_two, .init=redirect_stdout)
+Test(my_put_float_round, my_test_float_two, .init=redirect_stdout)
 {
     double n = 1.9999999;
 
