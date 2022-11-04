@@ -11,7 +11,7 @@ int my_display_hexa_float_nbr(long long int n)
 {
     if (n >= 10) {
         my_putchar((n % 10) + 'a');
-    } else if (n > 0) {
+    } else if (n >= 0) {
         my_putchar(n + 48);
     }
     return 1;
