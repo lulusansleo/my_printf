@@ -49,7 +49,9 @@ SRC			=	./lib/my/my_compute_power_rec.c \
 				source/big_scientific.c\
 				source/flag_g.c\
 				source/get_star.c\
-				source/wrapper_fourth.c
+				source/wrapper_fourth.c\
+				source/display_point_hexa.c\
+				source/my_put_hexa_float.c
 
 O_FILES		=	*.o
 

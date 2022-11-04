@@ -18,3 +18,12 @@ int wrapper_notation_big(va_list ap, check_flags_t *flags)
         ret = scientific_notation_big_e(nb, 6);
     return ret;
 }
+
+int wrapper_put_hexa_float(va_list ap, check_flags_t *flags)
+{
+    double nb = va_arg(ap, double);
+    int ret = 0;
+
+    ret = my_put_hexa_float(nb);
+    return ret;
+}

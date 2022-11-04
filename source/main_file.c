@@ -42,14 +42,14 @@ int write_s(char *s, va_list ap)
 
 int assign_function(va_list ap, check_flags_t *flag)
 {
-    char *flags = "scid%xXoupbSfFnEe";
+    char *flags = "scid%xXoupbSfFnEeaA";
     int (*fptr []) (va_list ap, check_flags_t *flags) = {&wrapper_my_putstr,
     &wrapper_my_putchar, &wrapper_my_put_nbr, &wrapper_my_put_nbr,
     &my_print_percent, &wrapper_my_put_nbr_hexa, &wrapper_my_put_nbr_hexa_m,
     &wrapper_my_put_nbr_octal, &wrapper_my_put_nbr_unsigned_int,
     &wrapper_print_pointer, &wrapper_my_put_b, &wrapper_print_non_printable,
     &wrapper_float, &wrapper_float, &wrapper_point, &wrapper_notation_big,
-    &wrapper_notation};
+    &wrapper_notation, &wrapper_put_hexa_float, &wrapper_put_hexa_float};
 
     for (int i = 0; flags[i] != '\0'; ++i)
         if (flags[i] == flag->flag)

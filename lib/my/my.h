@@ -93,4 +93,6 @@
     int my_get_exponent(double nb);
     int my_put_g(double nb);
     int my_put_big_g(double nb);
+    int my_put_point(double nb);
+    int my_put_hexa_float(double nb);
 #endif /* !myh */

@@ -128,4 +128,7 @@
     int wrapper_notation_big(va_list ap, check_flags_t *flags);
     int wrapper_notation(va_list ap, check_flags_t *flags);
     int count_with_precision_decimal(check_flags_t *flags, int nb, int count);
+    int my_put_point(double nb);
+    int my_put_hexa_float(double nb);
+    int wrapper_put_hexa_float(va_list ap, check_flags_t *flags);
 #endif /* !myh */
