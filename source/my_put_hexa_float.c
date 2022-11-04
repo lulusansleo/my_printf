@@ -58,37 +58,48 @@ int my_get_exponent_two(double nb)
     int limit = 0;
 
     if (nb >= 1) {
-        while (nb >= n || limit >= 13) {
+        while (nb >= n) {
             n = n * 2;
             pow++;
-            limit++;
         }
         return pow - 1;
     } else {
-        while (nb <= n || limit >= 13) {
+        while (nb <= n) {
             n = n / 2;
             pow--;
-            limit++;
         }
         return pow + 1;
+    }
+}
+
+int my_put_point(double nb)
+{
+    nb = nb - 1.0;
+    if (nb > 0) {
+        my_putstr("0x1.");
+        return 4;
+    } else {
+        my_putstr("0x1");
+        return 3;
     }
 }
 
 int my_put_hexa_float(double nb)
 {
     int e = my_get_exponent_two(nb);
+    int return_value = 0;
     long long int n = 0;
     int i = 0;
-
+    
     nb = my_get_two_with_nbr(nb, e);
-    my_putstr("0x1.");
+    return_value += my_put_point(nb);
     while (nb > 0 && i < 14) {
         nb = nb * 16;
         n = ((long long int) nb % 16);
-        my_display_hexa_float_nbr(n);
+        return_value += my_display_hexa_float_nbr(n);
         nb = nb - ((long long int) nb);
         i++;
     }
-    my_display_hexa_exponent(e);
-    return 0;
+    return_value += my_display_hexa_exponent(e);
+    return return_value;
 }
