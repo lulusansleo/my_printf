@@ -146,4 +146,13 @@
     int do_my_put_nbr(long long int nb, check_flags_t *flags);
     int is_length_modifier(char c, int order);
     int get_specifier(int i, char *str, check_flags_t *flags);
+    int scientific_notation_g(double nb, int pow);
+    int my_put_float_g(double nb, int pow);
+    int my_display_e_second(long int e, long int e_sign);
+    double my_check_negative(double nb, int *ret);
+    double my_round_float(double *d_part, long long int *w_part);
+    int display_float_g(int pow, long int w, double d);
+    int my_display_big_e_second(long int e, long int e_sign);
+    int my_displays_big_g(long int e, double nb, long int e_sign, int pow);
+    int scientific_notation_big_g(double nb, int pow);
 #endif /* !myh */
