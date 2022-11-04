@@ -55,6 +55,8 @@ SRC			=	./lib/my/my_compute_power_rec.c \
 				source/precision.c\
 				source/get_specifier.c\
 
+TEST_SRC	=	tests/test_printf.c
+
 O_FILES		=	*.o
 
 OBJ			=	$(SRC:.c=.o)
@@ -64,6 +66,10 @@ MYH			=	my.h
 LIBNAME		=	libmy.a
 
 CPPFLAGS	=	-Wall -Wextra
+
+TEST_FLAGS	=	--coverage	-lcriterion
+
+TESTNAME	=	unit_tests
 
 all:	build
 
@@ -76,6 +82,14 @@ clean:
 
 fclean:	clean
 	$(RM) -f $(LIBNAME)
+
+unit_tests: fclean all
+	gcc -o $(TESTNAME) $(SRC) $(TEST_SRC) $(LIBNAME) $(TEST_FLAGS)
+	make fclean
+
+run_tests: unit_tests
+	./$(TESTNAME)
+	rm *gcno *gcda $(TESTNAME)
 
 re:	fclean all
 
