@@ -54,6 +54,8 @@ SRC			=	./lib/my/my_compute_power_rec.c \
 				source/my_put_hexa_float.c\
 				source/precision.c\
 				source/get_specifier.c\
+				source/my_put_float_g.c\
+				source/flag_big_g.c
 
 TEST_SRC	=	tests/test_printf.c
 
