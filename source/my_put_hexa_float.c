@@ -78,7 +78,7 @@ int my_put_hexa_float(double nb)
     int return_value = 0;
     long long int n = 0;
     int i = 0;
-    
+
     nb = my_get_two_with_nbr(nb, e);
     return_value += my_put_point(nb);
     while (nb > 0 && i < 14) {
