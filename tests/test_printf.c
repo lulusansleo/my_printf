@@ -94,6 +94,14 @@ Test(my_put_float_second, my_test_float_two, .init=redirect_stdout)
     cr_assert_stdout_eq_str("17178227612323.000000\n");
 }
 
+Test(my_put_float_second, my_test_float_two, .init=redirect_stdout)
+{
+    double n = 1.9999999;
+
+    my_printf("%f\n", n);
+    cr_assert_stdout_eq_str("2.000000\n");
+}
+
 Test(my_put_hexa, my_test_nbr_hexa, .init=redirect_stdout)
 {
     int n = -1234;
